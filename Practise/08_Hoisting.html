@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Hoisting</h1>
+    <p>
+      Hoisting in JavaScript allows you to access functions and variables before
+      they have been created.
+      <br />
+      There are two things in JavaScript that are hoisted: <br />function
+      declarations variable declarations.
+    </p>
+
+    <script>
+      console.log(me);
+      console.log(job); // temporal dead zone
+      console.log(year);
+
+      var me = "Ankita"; // Hoisted-----o/p undefined
+      let job = "Developer"; //Reference error
+      const year = 1990;
+    </script>
+  </body>
+</html>

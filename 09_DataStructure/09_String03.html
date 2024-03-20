@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>String Methods</h1>
+    <ul>
+      <li>split()</li>
+      <li>join()</li>
+      <li>padding</li>
+    </ul>
+    <script>
+      const capitalizeName = function (name) {
+        const names = name.split(" ");
+        const namesUpper = [];
+
+        for (const n of names) {
+          // namesUpper.push(n[0].toUpperCase() + n.slice(1));
+          namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
+        }
+        console.log(namesUpper.join(" "));
+      };
+
+      capitalizeName("jessica ann smith davis");
+      capitalizeName("jonas schmedtmann");
+      const firstName = "Ankita";
+      const lastName = "Shah";
+      const newName = ["Miss", firstName, lastName.toUpperCase()].join(" ");
+      console.log(newName);
+
+      const capitaliseName = function (firstName) {
+        const names = firstName.split(" ");
+        const namesUpper = [];
+
+        for (const n of names) {
+          namesUpper.push(n[0].toUpperCase() + n.slice(1));
+        }
+        console.log(namesUpper.join(" "));
+      };
+      capitaliseName("ankita nikita");
+      capitaliseName("india is best");
+
+      //padding
+      const message = "Go to garden";
+      console.log(message.padStart(20, "+").padEnd(50, "+"));
+      console.log("Ankita".padStart(50, "+").padEnd(70, "+"));
+      console.log("Jonas".padStart(20, "+").padEnd(60, "+"));
+
+      const maskCreditCard = function (number) {
+        const str = number + "";
+        console.log(str);
+        const last = str.slice(-4);
+        return last.padStart(str.length, "*");
+      };
+      console.log(maskCreditCard(123456));
+      console.log(maskCreditCard(123456789));
+      console.log(maskCreditCard(1457896321));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h5>Object Method</h5>
+    <script>
+        const employee={
+            fName: "Ankita",
+            lName:"Shah",
+            birthyear:1990,
+            job:'Developer',
+            friends:["Anki", 'Niki'],
+            hadDriverlic: true,
+
+            // calcAge: function(birthyear){
+            //     return 2024-birthyear;
+            // }
+            // calcAge: function(){
+            //     return 2024-this.birthyear;
+            // },
+            calcAge:function(){
+                this.age =2024-this.birthyear
+                return this.age;
+            },
+            getSummary: function(){
+                return `${this.fName} is a ${this.calcAge()} year old ${employee.job},and she has ${this.hadDriverlic ?'a':'no'} drivers licence`
+            }
+        };
+        console.log(employee);
+
+        console.log(employee.calcAge()); 
+        
+        //console.log(employee['calcAge'](1990));
+        console.log(employee.getSummary());
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="" name="selectForm">
+      <label for="musicTypes">
+        Choose some music types, then click the button below:
+      </label>
+      <select name="musicTypes" id="musicTypes" multiple>
+        <option value="" selected>R&B</option>
+        <option value="">Jazz</option>
+        <option value="">New age</option>
+        <option value="">Rock</option>
+        <option value="">Times</option>
+        <option value="">Old</option>
+        <option value="">musics</option>
+      </select>
+      <button id="btn" type="button">How many are selected?</button>
+    </form>
+    <script>
+      `use strict`;
+      function counSelected(selectObject) {
+        let numberSelected = 0;
+        for (let i = 0; i < selectObject.options.length; i++) {
+          if (selectObject.options[i].selected) {
+            numberSelected++;
+          }
+        }
+        return numberSelected;
+      }
+      const btn = document.getElementById("btn");
+      btn.addEventListener("click", () => {
+        const musicTypes = document.selectForm.musicTypes;
+        console.log(`you have selected ${counSelected(musicTypes)} option(s).`);
+      });
+      console.log();
+    </script>
+  </body>
+</html>

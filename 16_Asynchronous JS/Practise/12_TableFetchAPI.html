@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+  <body>
+    <table id="jsonTable">
+      <thead>
+        <tr>
+          <th>User ID</th>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Body</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <script>
+      const req = fetch("https://jsonplaceholder.typicode.com/posts")
+        .then((apidata) => {
+          console.log(apidata);
+          return apidata.json();
+        })
+        .then((actualdata) => {
+          console.log(actualdata);
+          const tableBody = document.querySelector("#jsonTable tbody");
+
+          // Loop through the data and create table rows
+          actualdata.forEach((post) => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+            <td>${post.userId}</td>
+            <td>${post.id}</td>
+            <td>${post.title}</td>
+            <td>${post.body}</td>
+          `;
+            tableBody.appendChild(row);
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      console.log(req);
+    </script>
+  </body>
+</html>

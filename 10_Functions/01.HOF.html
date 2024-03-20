@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>HOF</h1>
+    <script>
+      const oneWord = function (str) {
+        return str.replace(/ /g, "").toLowerCase();
+      };
+      const upperFirstWord = function (str) {
+        //destructure using rest
+        const [first, ...others] = str.split(" ");
+        return [first.toUpperCase(), ...others].join(" ");
+      };
+      //HOF
+      const transformer = function (str, fn) {
+        console.log(`original string: ${str}`);
+        console.log(`Transformed string: ${fn(str)}`);
+        console.log(`Transformed by: ${fn.name}`);
+      };
+      transformer("javascript is best", upperFirstWord);
+      transformer("This is best space removed", oneWord);
+
+      //using addeventlistener as HOF and callfunction is hello func
+      const hello = function () {
+        alert("Hello call back");
+      };
+      document.body.addEventListener("click", hello);
+      //window.addEventListener("click", hello);
+    </script>
+  </body>
+</html>

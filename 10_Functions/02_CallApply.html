@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Call Apply Bind</h1>
+  </body>
+  <script>
+    const lufthansa = {
+      airline: "Lufthansa",
+      iataCode: "LH",
+      bookings: [],
+      book: function (flightNum, name) {
+        console.log(
+          `${name} booked a seat on ${this.airline} flight${this.iataCode}${flightNum}`
+        );
+        this.bookings.push({ flight: `${this.iataCode} ${flightNum}`, name });
+      },
+    };
+    lufthansa.book(236, "Jona");
+    lufthansa.book(635, "Jooo");
+    console.log(lufthansa);
+
+    const eurowings = {
+      airline: "Eurowings",
+      iataCode: "EW",
+      bookings: [],
+    };
+
+    const book = lufthansa.book; //First class func assigned book
+    //book(23, "Saraaahh"); //regular func need to call
+
+    book.call(eurowings, 23, "saa will");
+    console.log(eurowings);
+
+    book.call(lufthansa, 85, "shah");
+    console.log(lufthansa);
+    const swiss = {
+      airline: "Swiss Air lines",
+      iataCode: "SW",
+      bookings: [],
+    };
+
+    book.call(swiss, 27, "asha");
+    console.log(swiss);
+
+    //Apply method doesnt receives list of arguments instead it take array elements
+
+    const flightData = [158, "George"];
+    book.apply(swiss, flightData);
+    console.log(swiss);
+  </script>
+</html>

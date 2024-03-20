@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let name = {
+        firstname: "Shyam",
+        lastname: "Jain",
+        //     printFullName: function () {
+        //       console.log(this.firstname + " " + this.lastname);
+        //     },
+      };
+      //name.printFullName();
+
+      let name2 = {
+        firstname: "Ram",
+        lastname: "patel",
+        // printFullName: function () {
+        //   console.log(this.firstname + " " + this.lastname);
+        // },
+      };
+      // CALL ----
+      //name.printFullName.call(name2)
+
+      let printFullName = function (hometown, state) {
+        console.log(
+          this.firstname +
+            " " +
+            this.lastname +
+            " from " +
+            hometown +
+            "," +
+            state
+        );
+      };
+      //function burrowing
+      printFullName.call(name2, "mumbai", "maha");
+
+      printFullName.apply(name2, ["pune", "maha"]);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+
+  <body>
+    <main class="container">
+      <div class="countries">
+        <!--
+        <article class="country">
+          <img class="country__img" src="" />
+          <div class="country__data">
+            <h3 class="country__name">COUNTRY</h3>
+            <h4 class="country__region">REGION</h4>
+            <p class="country__row"><span>👫</span>POP people</p>
+            <p class="country__row"><span>🗣️</span>LANG</p>
+            <p class="country__row"><span>💰</span>CUR</p>
+          </div>
+        </article>
+        -->
+      </div>
+      <button class="btn-country">Where am I?</button>
+      <div class="images"></div>
+    </main>
+
+    <script>
+      const btn = document.querySelector(".btn-country");
+      const countriesContainer = document.querySelector(".countries");
+
+      const renderCountry = function (data, className = "") {
+        const html = `
+          <article class="country ${className}">
+            <img class="country__img" src="${data.flags?.png}" />
+            <div class="country__data">
+              <h3 class="country__name">${data.name?.common}</h3>
+              <h4 class="country__region">${data.region}</h4>
+              <p class="country__row"><span>👫</span>${(
+                +data.population / 1000000
+              ).toFixed(1)} people</p>
+              <p class="country__row"><span>🗣️</span>${Object.values(
+                data.languages
+              )}</p>
+              <p class="country__row"><span>💰</span>${Object.keys(
+                data.currencies
+              )}</p>
+            </div>
+          </article>`;
+        countriesContainer.insertAdjacentHTML("beforeend", html);
+        // countriesContainer.style.opacity = 1;
+      };
+
+      //error function
+      const renderError = function (msg) {
+        countriesContainer.insertAdjacentText("beforeend", msg);
+        // countriesContainer.style.opacity = 1;
+      };
+
+      //   const getCountryData = function (country) {
+      //     fetch(`https://restcountries.com/v3.1/name/${country}`)
+      //       .then(function (response) {
+      //         console.log(response, "response");
+      //         return response.json();
+      //       })
+      //       .then(function (data) {
+      //         console.log(data, "data");
+      //         renderCountry(data[0], "render");
+      //       });
+      //   };
+      //   getCountryData("portugal");
+
+      const getCountryData2 = function (country) {
+        //country  1
+        fetch(`https://restcountries.com/v3.1/name/${country}`)
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data, "maindata");
+            renderCountry(data[0], "render");
+            console.log(renderCountry(data[0], "data"));
+            const neighbour = data[0].borders[0];
+            //  console.log(neighbour);
+            if (!neighbour) return;
+
+            //country 2
+            //return 23;
+            return fetch(`https://restcountries.com/v3.1/alpha/${neighbour}`);
+          })
+          .then((response) => response.json())
+          .then((data) => renderCountry(data[0], "neighbour"))
+          .catch((err) => {
+            alert("alert");
+            console.log(`${err}`);
+            renderError(`Some thing went wrong ${err.message}`);
+          })
+          .finally(() => {
+            countriesContainer.style.opacity = 1;
+          });
+      };
+      btn.addEventListener("click", function () {
+        getCountryData2("bharat");
+        // getCountryData2("111frfffff");
+      });
+
+      //   getCountryData2("portugal");
+      // getCountryData2("111frfffff");
+    </script>
+  </body>
+</html>

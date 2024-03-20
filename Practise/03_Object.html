@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Object 
+    object method for getting property and add...
+    <script>
+        const employee={
+            firstName: "Ankita",
+            lastName: "Shah",
+            age:2024-1990,
+            job: 'Developer',
+            friends:["Anki","Raj",'Niki']
+        };
+        console.log(employee);
+
+        console.log(employee.firstName);
+        console.log(employee.lastName);
+
+        const nameKey ="Name";
+        console.log(employee['first'+nameKey]);
+        console.log(employee['last'+nameKey]);
+
+        const interestIn =prompt("What do you want to know about Ankita? choose between firstName,lastName,age,job")
+        //console.log(employee[interestIn]);
+
+        if(employee[interestIn]){
+            console.log(employee[interestIn]);
+        }
+        else{
+            console.log("wrong choice");
+        }
+
+        employee.location ="Ahmedabad";
+        employee['email']="anki@gmail.com"
+        console.log(employee);
+
+        console.log(`${employee.firstName} has ${employee.friends.length} friends`)
+    </script>
+</body>
+</html>

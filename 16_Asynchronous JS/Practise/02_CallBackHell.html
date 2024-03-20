@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>callback</h1>
+    <script>
+      //   function greet() {
+      //     console.log("greet after 1 second");
+      //   }
+      //setTimeout(greet, 1000);
+      console.log("data");
+      setTimeout(() => {
+        console.log("1 sec passed");
+        setTimeout(() => {
+          console.log("2 sec passed");
+          setTimeout(() => {
+            console.log("3 sec passed");
+          }, 1000);
+        }, 1000);
+      }, 1000);
+    </script>
+  </body>
+</html>
